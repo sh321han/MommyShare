@@ -81,20 +81,13 @@ public class MainFragment extends Fragment {
     }
 
     private void setData() {
-//        for (int i = 0; i < 10; i++) {
-//            MainProduct p = new MainProduct();
-//            p.setName("Name " + i);
-//            p.setPrice(i);
-//            p.setDeposit(i);
-//            p.setMinPeriod(i);
-//            p.setMaxPeriod(i);
-//            mAdapter.set(p);
-//        }
+
 
         NetworkManager.getInstance().MainProductList(new NetworkManager.OnResultListener<List<MainProduct>>() {
             @Override
             public void onSuccess(Request request, List<MainProduct> result) {
 
+                mAdapter.clear();
                 mAdapter.addAll(result);
             }
 

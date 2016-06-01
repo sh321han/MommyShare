@@ -16,7 +16,7 @@ public class OtherProductDetailAdapter extends RecyclerView.Adapter<RecyclerView
 
     ProductDetailData item = null;
 
-    public void set(ProductDetailData data) {
+    public void add(ProductDetailData data) {
         item = data;
         notifyDataSetChanged();
     }
@@ -78,9 +78,9 @@ public class OtherProductDetailAdapter extends RecyclerView.Adapter<RecyclerView
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (getItemViewType(position)) {
-//            case VIEW_TYPE_PAGER :
-//                ((OtherPagerViewHolder)holder).setData();
-//                break;
+            case VIEW_TYPE_PAGER :
+                ((OtherPagerViewHolder)holder).setData();
+                break;
             case VIEW_TYPE_LENDER:
                 ((LenderViewHolder) holder).setData(item);
                 break;

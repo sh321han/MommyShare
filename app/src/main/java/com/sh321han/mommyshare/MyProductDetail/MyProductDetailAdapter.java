@@ -6,27 +6,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sh321han.mommyshare.R;
-import com.sh321han.mommyshare.data.MyProductDetailData;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.sh321han.mommyshare.data.ProductDetailData;
 
 /**
  * Created by Administrator on 2016-05-21.
  */
 public class MyProductDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<MyProductDetailData> items = new ArrayList<MyProductDetailData>();
+    ProductDetailData item = null;
 
-    public void add(MyProductDetailData data) {
-        items.add(data);
+    public void add(ProductDetailData data) {
+        item = data;
         notifyDataSetChanged();
     }
 
-    public void addAll(List<MyProductDetailData> items) {
-        this.items.addAll(items);
-        notifyDataSetChanged();
-    }
+
 
     private static final int VIEW_TYPE_PAGER = 0;
     private static final int VIEW_TYPE_DESC = 1;
@@ -35,7 +29,6 @@ public class MyProductDetailAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemViewType(int position) {
-        MyProductDetailData data = items.get(position);
 
         if (position == 0) {
             return VIEW_TYPE_PAGER;
@@ -71,23 +64,24 @@ public class MyProductDetailAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (getItemViewType(position)) {
-            case VIEW_TYPE_PAGER :
-                ((MyPagerViewHolder) holder).setData(items.get(position));
-                break;
+//            case VIEW_TYPE_PAGER :
+//                ((MyPagerViewHolder) holder).setData(item);
+//                break;
             case VIEW_TYPE_DESC:
-                ((MyDescViewHolder) holder).setData(items.get(position));
+                ((MyDescViewHolder) holder).setData(item);
                 break;
             case VIEW_TYPE_DETAIL:
-                ((MyDetailViewHolder) holder).setData(items.get(position));
+                ((MyDetailViewHolder) holder).setData(item);
                 break;
             case VIEW_TYPE_REVIEW:
-                ((MyReviewViewHolder) holder).setData(items.get(position));
+                ((MyReviewViewHolder) holder).setData(item.getReviews().get(position-3));
                 break;
         }
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        if (item == null) return 0;
+        return item.getReviews().size() + 3;
     }
 }

@@ -5,14 +5,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sh321han.mommyshare.R;
-import com.sh321han.mommyshare.data.MyProductDetailData;
+import com.sh321han.mommyshare.data.ProductDetailData;
 
 /**
  * Created by Administrator on 2016-05-21.
  */
 public class MyDescViewHolder extends RecyclerView.ViewHolder {
     TextView nameView, priceView, depositView, periodView, locationView;
-    MyProductDetailData data;
+    ProductDetailData data;
 
     public MyDescViewHolder(View itemView) {
         super(itemView);
@@ -23,12 +23,12 @@ public class MyDescViewHolder extends RecyclerView.ViewHolder {
         locationView = (TextView)itemView.findViewById(R.id.text_location);
     }
 
-    public void setData(MyProductDetailData data) {
+    public void setData(ProductDetailData data) {
         this.data = data;
-        nameView.setText(data.getProduct_name());
-        priceView.setText("대여료 | " + data.getPrice());
-        depositView.setText("보증금 | " + data.getDeposit());
-        periodView.setText("대여기간 | " + data.getPeriod());
+        nameView.setText(data.getName());
+        priceView.setText("대여료 | " + data.getRent_fee());
+        depositView.setText("보증금 | " + data.getRent_deposit());
+        periodView.setText("대여기간 | " + data.getMin_rent_period() + "/" + data.getMax_rent_period());
         locationView.setText("대여장소 | " + data.getLocation());
 
     }

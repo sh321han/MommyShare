@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.sh321han.mommyshare.Manager.NetworkManager;
 import com.sh321han.mommyshare.MyProductDetail.MyProductDetailActivity;
@@ -46,37 +45,50 @@ public class WriteDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Toast.makeText(getActivity(), getArguments().getString("name"), Toast.LENGTH_LONG).show();
         final String name = getArguments().getString("name");
+        final int rent_fee = getArguments().getInt("rent_fee");
+        final int rent_deposit = getArguments().getInt("rent_deposit");
+        final int rent_min_period = getArguments().getInt("rent_min_period");
+        final int rent_max_period = getArguments().getInt("rent_max_period");
+
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_write_detail, container, false);
 
 
-        Button button = (Button)getActivity().findViewById(R.id.btn_next);
-        button.setOnClickListener(new View.OnClickListener() {
+        editText = (EditText) view.findViewById(R.id.edit_detail);
+        editText.requestFocus();
+
+
+        Button btn = (Button) getActivity().findViewById(R.id.btn_next);
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //네트워크 매니저
 
 
-                NetworkManager.getInstance().ProductWrite("dd", new NetworkManager.OnResultListener<WriteData>() {
-                    @Override
-                    public void onSuccess(Request request, WriteData result) {
-                        Intent i = new Intent(getActivity(), MyProductDetailActivity.class);
-                        i.putExtra("name",name);
-                        i.putExtra("home", 1);
+                NetworkManager.getInstance().ProductWrite(name, rent_fee, rent_deposit, rent_min_period, rent_max_period,
+                        new NetworkManager.OnResultListener<WriteData>() {
+                            @Override
+                            public void onSuccess(Request request, WriteData result) {
+                                Intent i = new Intent(getActivity(), MyProductDetailActivity.class);
+                                i.putExtra("content", editText.getText().toString());
+                                i.putExtra("name", name);
+                                i.putExtra("rent_fee", rent_fee);
+                                i.putExtra("rent_deposit", rent_deposit);
+                                i.putExtra("rent_min_period", rent_min_period);
+                                i.putExtra("rent_max_period", rent_max_period);
+                                i.putExtra("home", 1);
+                                startActivity(i);
 
-                        startActivity(i);
+                            }
 
-                    }
+                            @Override
+                            public void onFail(Request request, IOException exception) {
 
-                    @Override
-                    public void onFail(Request request, IOException exception) {
-
-                    }
-                });
+                            }
+                        });
             }
         });
 
@@ -87,8 +99,6 @@ public class WriteDetailFragment extends Fragment {
         ImageButton btn_camera = (ImageButton) view.findViewById(R.id.btn_camera);
         ImageButton btn_gallery = (ImageButton) view.findViewById(R.id.btn_gallery);
 
-        editText = (EditText) view.findViewById(R.id.edit_detail);
-        editText.requestFocus();
 
         btn_camera.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

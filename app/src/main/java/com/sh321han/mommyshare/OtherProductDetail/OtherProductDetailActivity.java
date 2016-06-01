@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.sh321han.mommyshare.Manager.NetworkManager;
@@ -52,14 +51,14 @@ public class OtherProductDetailActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Request request, ProductDetailData result) {
 
-                mAdapter.set(result);
+                mAdapter.add(result);
 
             }
 
             @Override
             public void onFail(Request request, IOException exception) {
 
-                Log.d("실패", "ㅇㅇㅇ");
+
             }
         });
     }

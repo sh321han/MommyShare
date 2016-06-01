@@ -1,6 +1,5 @@
 package com.sh321han.mommyshare.OtherProductDetail;
 
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,10 +12,10 @@ import com.sh321han.mommyshare.R;
  */
 public class OtherPagerViewHolder extends RecyclerView.ViewHolder {
 
-    private static final String MOMMYSHARE_SERVER = "http://52.79.57.157:3000";
-    PagerAdapter mAdapter;
+//    private static final String MOMMYSHARE_SERVER = "http://52.79.57.157:3000";
+    OtherPagerAdapter mAdapter;
     ViewPager pager;
-    String data;
+
 
 
     public OtherPagerViewHolder(View itemView) {
@@ -24,7 +23,7 @@ public class OtherPagerViewHolder extends RecyclerView.ViewHolder {
 
         pager = (ViewPager)itemView.findViewById(R.id.pager);
 
-        mAdapter = new OtherPagerAdapter(itemView.getContext());
+        mAdapter = new OtherPagerAdapter();
         pager.setAdapter(mAdapter);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -42,12 +41,15 @@ public class OtherPagerViewHolder extends RecyclerView.ViewHolder {
 
             }
         });
+        setData();
+
+        pager.setCurrentItem(0);
 
     }
 
-    public void setData(String data) {
-        this.data = data;
-
-
+    public void setData() {
+        for (int i = 0; i < 3; i++) {
+            mAdapter.add("item : " + i);
+        }
     }
 }

@@ -35,13 +35,17 @@ public class WriteFragment extends Fragment {
         edit_max_period = (EditText)v.findViewById(R.id.edit_max_period);
         edit_min_period = (EditText)v.findViewById(R.id.edit_min_period);
 
-        Button buttn = (Button)getActivity().findViewById(R.id.btn_next);
+        Button btn = (Button)getActivity().findViewById(R.id.btn_next);
 
-        buttn.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle  b = new Bundle();
                 b.putString("name",edit_name.getText().toString());
+                b.putInt("rent_fee", Integer.parseInt(edit_price.getText().toString()));
+                b.putInt("rent_deposit", Integer.parseInt(edit_deposit.getText().toString()));
+                b.putInt("rent_min_period", Integer.parseInt(edit_min_period.getText().toString()));
+                b.putInt("rent_max_period", Integer.parseInt(edit_max_period.getText().toString()));
                 WriteLocationFragment nextFragment = new WriteLocationFragment();
                 nextFragment.setArguments(b);
                 getFragmentManager().beginTransaction().replace(R.id.container, nextFragment).commit();

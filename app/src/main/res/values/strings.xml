@@ -21,6 +21,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_write_detail">WriteDetailActivity</string>
     <string name="title_activity_other_profile">OtherProfileActivity</string>
-    <string name="facebook_app_id">1544383425865845</string>
+    <!--<string name="facebook_app_id">1544383425865845</string>-->
     <string name="title_activity_login">LoginActivity</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false"> AIzaSyBLbvHKa-pIlMbmxrjLfHEVKo2LyTx9FfY </string>
 </resources>

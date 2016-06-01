@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.sh321han.mommyshare.Main.MainActivity;
 import com.sh321han.mommyshare.R;
-import com.sh321han.mommyshare.data.MyProductDetailData;
+import com.sh321han.mommyshare.data.ProductDetailData;
 
 public class MyProductDetailActivity extends AppCompatActivity {
 
@@ -18,7 +18,10 @@ public class MyProductDetailActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     MyProductDetailAdapter mAdapter;
     RecyclerView.LayoutManager layoutManager;
-    MyProductDetailData data;
+
+    String name;
+    int rent_fee, rent_deposit, rent_min_period, rent_max_period;
+    String content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +34,12 @@ public class MyProductDetailActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-
+        content = intent.getStringExtra("content");
+        name = intent.getStringExtra("name");
+        rent_fee = intent.getExtras().getInt("rent_fee");
+        rent_deposit = intent.getExtras().getInt("rent_deposit");
+        rent_min_period = intent.getExtras().getInt("rent_min_period");
+        rent_max_period = intent.getExtras().getInt("rent_max_period");
         home = intent.getExtras().getInt("home");
 
 
@@ -42,14 +49,20 @@ public class MyProductDetailActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        initData(name);
+        initData();
     }
 
-    private void initData(String name) {
+    private void initData() {
 
         //네트워크 매니저를 받아온 데이터
-
-        data.setProduct_name(name);
+        ProductDetailData data = new ProductDetailData();
+        data.setName(name);
+        data.setRent_fee(rent_fee);
+        data.setRent_deposit(rent_deposit);
+        data.setMin_rent_period(rent_min_period);
+        data.setMax_rent_period(rent_max_period);
+        data.setContent(content);
+//        data.setProduct_name(name);
 //        data.setPrice(20000);
 //        data.setDeposit(10000);
 //        data.setPeriod(20);
