@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sh321han.mommyshare">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Main.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Chatting.ChattingActivity"
+            android:label="@string/title_activity_chatting"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Chatting.ChattingListActivity"
+            android:label="@string/title_activity_chatting_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Notice.NoticeActivity"
+            android:label="@string/title_activity_notice"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Notice.NoticeDetailActivity"
+            android:label="@string/title_activity_notice_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyProductList.MyProductListActivity"
+            android:label="@string/title_activity_my_product_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyWishList.MyWishListActivity"
+            android:label="@string/title_activity_my_wish_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Setting.SettingActivity"
+            android:label="@string/title_activity_setting"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Write.WriteActivity"
+            android:label="@string/title_activity_write"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyProductDetail.MyProductDetailActivity"
+            android:label="@string/title_activity_my_product_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Profile.MyProfileActivity"
+            android:label="@string/title_activity_my_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Profile.OtherProfileActivity"
+            android:label="@string/title_activity_other_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OtherProductDetail.OtherProductDetailActivity"
+            android:label="@string/title_activity_other_product_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+    </application>
+
+</manifest>
